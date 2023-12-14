@@ -7,6 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { v4 as uuid } from 'uuid';
 import { JwtService } from '@nestjs/jwt';
 import { UserRole } from './dto/user.enum';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
@@ -67,8 +68,27 @@ export class UserService {
     return await this.userRepository.save(user);
   }
 
+  async update(id: string, req: UpdateUserDto) {
+    const user: User = await this.userRepository.findOne({
+      where: { id },
+    });
+    if (!user) {
+      throw new HttpException('Invalid User Id', HttpStatus.NOT_FOUND);
+    }
+    user.name = req.name ? req.name : user.name;
+    user.email = req.email ? req.email : user.email;
+    if (req.password) {
+      user.password = req.password;
+    }
+
+    return this.userRepository.save(user);
+  }
+
   async remove(id: string) {
     const user: User = await this.userRepository.findOne({ where: { id } });
+    if (!user) {
+      throw new HttpException('Invalid User Id', HttpStatus.NOT_FOUND);
+    }
     await this.userRepository.delete({ id });
 
     return user;

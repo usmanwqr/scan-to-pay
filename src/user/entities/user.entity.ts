@@ -3,6 +3,7 @@ import { UserRole } from '../dto/user.enum';
 import { IsEmail, IsEnum, Length } from 'class-validator';
 import { Card } from 'src/card/entities/card.entity';
 import { Review } from 'src/review/entities/review.entity';
+import { Booking } from 'src/booking/entities/booking.entity';
 
 @Entity()
 export class User {
@@ -35,4 +36,10 @@ export class User {
 
   @OneToMany(() => Review, (mReviews) => mReviews.merchant)
   mReviews: Review[];
+
+  @OneToMany(() => Booking, (bookings) => bookings.user)
+  bookings: Booking[];
+
+  @OneToMany(() => Booking, (mBookings) => mBookings.merchant)
+  mBookings: Booking[];
 }

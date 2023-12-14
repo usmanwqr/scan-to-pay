@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Booking } from 'src/booking/entities/booking.entity';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Service {
@@ -10,4 +11,7 @@ export class Service {
 
   @Column()
   price: number;
+
+  @OneToOne(() => Booking, (booking) => booking.service)
+  booking: Booking;
 }

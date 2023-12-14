@@ -64,6 +64,9 @@ export class ReviewService {
 
   async remove(id: string) {
     const review = await this.reviewRepository.findOne({ where: { id } });
+    if (!review) {
+      throw new HttpException('Invalid Review Id', HttpStatus.NOT_FOUND);
+    }
     this.reviewRepository.delete({ id });
 
     return review;

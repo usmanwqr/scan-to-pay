@@ -8,12 +8,14 @@ import {
   Delete,
   Request,
   UnauthorizedException,
+  Patch,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login.dto';
 import { UserGuard } from 'src/user/user.guard';
 import { UserRole } from './dto/user.enum';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('user')
 export class UserController {
@@ -53,6 +55,19 @@ export class UserController {
   @Post('/login')
   async login(@Body() req: LoginUserDto) {
     return await this.userService.login(req);
+  }
+
+  @UseGuards(UserGuard)
+  @Patch(':id')
+  update(
+    @Request() req,
+    @Param('id') id: string,
+    @Body() updateUserDto: UpdateUserDto,
+  ) {
+    if (req.user.role == UserRole.CONSUMER) {
+      throw new UnauthorizedException();
+    }
+    return this.userService.update(id, updateUserDto);
   }
 
   @UseGuards(UserGuard)

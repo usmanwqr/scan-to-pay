@@ -61,6 +61,9 @@ export class CardService {
 
   async remove(id: string) {
     const card: Card = await this.cardRepository.findOne({ where: { id } });
+    if (!card) {
+      throw new HttpException('Invalid Card Id', HttpStatus.NOT_FOUND);
+    }
     this.cardRepository.delete({ id });
     return card;
   }
