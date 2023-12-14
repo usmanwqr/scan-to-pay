@@ -18,7 +18,7 @@ export class User {
   @IsEmail()
   email: string;
 
-  @Column({ select: false })
+  @Column()
   @Length(2, 8)
   password: string;
 

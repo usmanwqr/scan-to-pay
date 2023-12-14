@@ -8,6 +8,7 @@ import { v4 as uuid } from 'uuid';
 import { JwtService } from '@nestjs/jwt';
 import { UserRole } from './dto/user.enum';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { encryptPassword, decryptPassword } from './user.utility';
 
 @Injectable()
 export class UserService {
@@ -23,11 +24,14 @@ export class UserService {
     if (checkUser) {
       throw new HttpException('Already registered', HttpStatus.BAD_REQUEST);
     }
+
+    const password = await encryptPassword(req.password);
+
     const user: Partial<User> = {
       id: uuid(),
       email: req.email,
       name: req.name,
-      password: req.password,
+      password: password,
       role: req.role,
     };
     const payload = { sub: user.id, email: user.email, role: user.role };
@@ -42,24 +46,34 @@ export class UserService {
 
   async findAll(): Promise<User[]> {
     return await this.userRepository.find({
+      select: ['id', 'name', 'email', 'role', 'accessToken'],
       where: { role: UserRole.CONSUMER },
     });
   }
 
   async findOne(id: string): Promise<User> {
-    return await this.userRepository.findOne({ where: { id } });
+    const user: User = await this.userRepository.findOne({
+      where: { id },
+    });
+    if (!user) {
+      throw new HttpException('Invalid User Id', HttpStatus.NOT_FOUND);
+    }
+    delete user.password;
+    return user;
   }
 
   async login(req: LoginUserDto) {
     const user: User = await this.userRepository.findOne({
-      where: { email: req.email, password: req.password },
+      where: { email: req.email },
     });
 
     if (!user) {
-      throw new HttpException(
-        'Incorrect Email or Password.',
-        HttpStatus.UNAUTHORIZED,
-      );
+      throw new HttpException('Incorrect Email.', HttpStatus.UNAUTHORIZED);
+    }
+
+    const ismatch = await decryptPassword(user.password, req.password);
+    if (!ismatch) {
+      throw new HttpException('Incorrect Password.', HttpStatus.UNAUTHORIZED);
     }
 
     const payload = { sub: user.id, email: user.email, role: user.role };
@@ -67,7 +81,10 @@ export class UserService {
       expiresIn: '3d',
     });
 
-    return await this.userRepository.save(user);
+    const res = await this.userRepository.save(user);
+    delete res.password;
+
+    return res;
   }
 
   async update(id: string, req: UpdateUserDto) {
