@@ -34,8 +34,10 @@ export class UserService {
     user.accessToken = await this.jwtService.signAsync(payload, {
       expiresIn: '3d',
     });
+    const res = await this.userRepository.save(user);
+    delete res.password;
 
-    return await this.userRepository.save(user);
+    return res;
   }
 
   async findAll(): Promise<User[]> {
