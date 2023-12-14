@@ -43,6 +43,9 @@ export class CardService {
 
   async update(id: string, req: UpdateCardDto) {
     const card: Card = await this.cardRepository.findOne({ where: { id } });
+    if (!card) {
+      throw new HttpException('Invalid Card Id', HttpStatus.NOT_FOUND);
+    }
     card.name = req.name ? req.name : card.name;
     card.number = req.number ? req.number : card.number;
     card.cvv = req.cvv ? req.cvv : card.cvv;

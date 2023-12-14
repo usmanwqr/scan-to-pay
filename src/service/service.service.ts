@@ -38,6 +38,9 @@ export class ServiceService {
     const service: Service = await this.serviceRepository.findOne({
       where: { id },
     });
+    if (!service) {
+      throw new HttpException('Invalid Service Id', HttpStatus.NOT_FOUND);
+    }
     service.name = req.name ? req.name : service.name;
     service.price = req.price ? req.price : service.price;
 
