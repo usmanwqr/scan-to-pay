@@ -80,8 +80,10 @@ export class UserService {
     if (req.password) {
       user.password = req.password;
     }
+    const res = await this.userRepository.save(user);
 
-    return this.userRepository.save(user);
+    delete res.password;
+    return res;
   }
 
   async remove(id: string) {
