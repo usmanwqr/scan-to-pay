@@ -5,6 +5,7 @@ import { CardModule } from './card/card.module';
 import { ServiceModule } from './service/service.module';
 import { ReviewModule } from './review/review.module';
 import { BookingModule } from './booking/booking.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { BookingModule } from './booking/booking.module';
     ServiceModule,
     ReviewModule,
     BookingModule,
+    PaymentModule,
   ],
   controllers: [],
   providers: [],

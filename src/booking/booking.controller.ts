@@ -81,6 +81,6 @@ export class BookingController {
     if (req.user.role == UserRole.CONSUMER) {
       throw new UnauthorizedException();
     }
-    return this.bookingService.remove(id);
+    return this.bookingService.remove(req.user.sub, id);
   }
 }

@@ -4,6 +4,7 @@ import { IsEmail, IsEnum, Length } from 'class-validator';
 import { Card } from 'src/card/entities/card.entity';
 import { Review } from 'src/review/entities/review.entity';
 import { Booking } from 'src/booking/entities/booking.entity';
+import { Payment } from 'src/payment/entities/payment.entity';
 
 @Entity()
 export class User {
@@ -42,4 +43,7 @@ export class User {
 
   @OneToMany(() => Booking, (mBookings) => mBookings.merchant)
   mBookings: Booking[];
+
+  @OneToMany(() => Payment, (payments) => payments.user)
+  payments: Payment[];
 }

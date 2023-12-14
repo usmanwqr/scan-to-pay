@@ -1,5 +1,12 @@
+import { Payment } from 'src/payment/entities/payment.entity';
 import { User } from 'src/user/entities/user.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Card {
@@ -23,4 +30,7 @@ export class Card {
 
   @Column()
   userId: string;
+
+  @OneToMany(() => Payment, (payments) => payments.card, { nullable: true })
+  payments: Payment[];
 }

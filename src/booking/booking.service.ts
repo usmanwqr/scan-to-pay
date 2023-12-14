@@ -5,7 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Booking } from './entities/booking.entity';
 import { Repository } from 'typeorm';
 import { v4 as uuid } from 'uuid';
-import { BookingStatus } from './dto/status.enum';
+import { Status } from './dto/status.enum';
 
 @Injectable()
 export class BookingService {
@@ -16,7 +16,7 @@ export class BookingService {
     const booking: Partial<Booking> = {
       id: uuid(),
       details: req.details,
-      status: BookingStatus.PENDING,
+      status: Status.PENDING,
       merchantId: merchantId,
       userId: req.userId,
       serviceId: req.serviceId,
@@ -53,7 +53,7 @@ export class BookingService {
         HttpStatus.UNAUTHORIZED,
       );
     }
-    booking.status = BookingStatus.COMPLETED;
+    booking.status = Status.COMPLETED;
 
     return this.bookingRepository.save(booking);
   }
@@ -69,15 +69,21 @@ export class BookingService {
         HttpStatus.UNAUTHORIZED,
       );
     }
-    booking.status = BookingStatus.REJECTED;
+    booking.status = Status.REJECTED;
 
     return this.bookingRepository.save(booking);
   }
 
-  async remove(id: string) {
+  async remove(merchantId: string, id: string) {
     const booking = await this.bookingRepository.findOne({ where: { id } });
     if (!booking) {
       throw new HttpException('Invalid Booking Id', HttpStatus.NOT_FOUND);
+    }
+    if (booking.merchantId != merchantId) {
+      throw new HttpException(
+        'A merchant can only remove booking booked by himself.',
+        HttpStatus.UNAUTHORIZED,
+      );
     }
     await this.bookingRepository.delete({ id });
     return booking;

@@ -7,8 +7,9 @@ import {
 } from 'typeorm';
 import { User } from 'src/user/entities/user.entity';
 import { IsEnum } from 'class-validator';
-import { BookingStatus } from '../dto/status.enum';
+import { Status } from '../dto/status.enum';
 import { Service } from 'src/service/entities/service.entity';
+import { Payment } from 'src/payment/entities/payment.entity';
 
 @Entity()
 export class Booking {
@@ -19,8 +20,8 @@ export class Booking {
   details: string;
 
   @Column()
-  @IsEnum(BookingStatus)
-  status: BookingStatus;
+  @IsEnum(Status)
+  status: Status;
 
   @ManyToOne(() => User, (user) => user.bookings)
   user: User;
@@ -39,4 +40,7 @@ export class Booking {
 
   @Column()
   serviceId: string;
+
+  @OneToOne(() => Payment, (payment) => payment.booking)
+  payment: Payment;
 }
