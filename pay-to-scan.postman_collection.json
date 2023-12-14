@@ -1,0 +1,1156 @@
+{
+	"info": {
+		"_postman_id": "00ad1fad-bb8b-4eb9-86bc-53cb3a456ea4",
+		"name": "pay-to-scan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30813387"
+	},
+	"item": [
+		{
+			"name": "Merchant",
+			"item": [
+				{
+					"name": "Service",
+					"item": [
+						{
+							"name": "Add Service",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Backend Service\",\r\n    \"price\":1000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base_URL}}/service",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"service"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Services",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/service",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"service"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Service",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/service/65efeff7-64e2-48f6-9abd-452c21384cb5",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"service",
+										"65efeff7-64e2-48f6-9abd-452c21384cb5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Service",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/service/65efeff7-64e2-48f6-9abd-452c21384cb5",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"service",
+										"65efeff7-64e2-48f6-9abd-452c21384cb5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update service",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"price\":650\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base_URL}}/service/65efeff7-64e2-48f6-9abd-452c21384cb5",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"service",
+										"65efeff7-64e2-48f6-9abd-452c21384cb5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Booking",
+					"item": [
+						{
+							"name": "Add Booking",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"details\":\"Abcd\",\r\n    \"userId\":\"e2650b68-2c05-440b-8b52-696e4844f8ed\",\r\n    \"serviceId\":\"120aab80-564d-4b79-ae5c-01f60a7108ad\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base_URL}}/booking",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"booking"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Booking",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/booking",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"booking"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Booking",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/booking/6c287061-ea93-4fb0-91b9-32e3ae577842",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"booking",
+										"6c287061-ea93-4fb0-91b9-32e3ae577842"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Booking",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/booking/6c287061-ea93-4fb0-91b9-32e3ae577842",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"booking",
+										"6c287061-ea93-4fb0-91b9-32e3ae577842"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update booking",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"details\":\"updated details\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base_URL}}/booking/6c287061-ea93-4fb0-91b9-32e3ae577842",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"booking",
+										"6c287061-ea93-4fb0-91b9-32e3ae577842"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reject Booking",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/booking/reject-booking/6c287061-ea93-4fb0-91b9-32e3ae577842",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"booking",
+										"reject-booking",
+										"6c287061-ea93-4fb0-91b9-32e3ae577842"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm Booking",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/booking/confirm-booking/6c287061-ea93-4fb0-91b9-32e3ae577842",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"booking",
+										"confirm-booking",
+										"6c287061-ea93-4fb0-91b9-32e3ae577842"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Payment",
+					"item": [
+						{
+							"name": "Reject payment",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/payment/reject-payment/21f3dce1-323f-46dd-b5d2-90a3c2df497f",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"payment",
+										"reject-payment",
+										"21f3dce1-323f-46dd-b5d2-90a3c2df497f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm payment",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/payment/confirm-payment/21f3dce1-323f-46dd-b5d2-90a3c2df497f",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"payment",
+										"confirm-payment",
+										"21f3dce1-323f-46dd-b5d2-90a3c2df497f"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Review",
+					"item": [
+						{
+							"name": "Get all merchant reviews",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/review/merchant-reviews",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"review",
+										"merchant-reviews"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"MERCHANT-ACCESS-TOKEN\", jsonData.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Muhammad Usman\",\r\n    \"email\":\"usman@test.com\",\r\n    \"password\":\"Abcd@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/user/merchant-register",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"user",
+								"merchant-register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"MERCHANT-ACCESS-TOKEN\", jsonData.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"usman@test.com\",\r\n    \"password\":\"Abcd@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/user/login",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consumer Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"CONSUMER-ACCESS-TOKEN\", jsonData.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Consumer\",\r\n    \"email\":\"consume@test.com\",\r\n    \"password\":\"Abcd@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/user/consumer-register",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"user",
+								"consumer-register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Consumers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base_URL}}/user",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base_URL}}/user/profile",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Consumer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base_URL}}/user/c0eeae3c-169c-4bd3-aa0a-f59923c19abd",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"user",
+								"c0eeae3c-169c-4bd3-aa0a-f59923c19abd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{MERCHANT-ACCESS-TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Consumer Update\",\r\n    \"password\":\"Abcd@12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/user/e2650b68-2c05-440b-8b52-696e4844f8ed",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"user",
+								"e2650b68-2c05-440b-8b52-696e4844f8ed"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Consumer",
+			"item": [
+				{
+					"name": "Card",
+					"item": [
+						{
+							"name": "Add Card",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Abcd\",\r\n    \"number\":\"4555555555555555\",\r\n    \"cvv\":789,\r\n    \"expiryDate\":\"09/24\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base_URL}}/card",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"card"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All User Cards",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/card",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"card"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Card",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/card/855f9717-2668-4ba1-9e8e-29a5fd6deed3",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"card",
+										"855f9717-2668-4ba1-9e8e-29a5fd6deed3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Card",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/card/9215f2c1-413b-4ba6-b66e-b3a12229c041",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"card",
+										"9215f2c1-413b-4ba6-b66e-b3a12229c041"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update card",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cvv\":647,\r\n    \"expiryDate\":\"10/24\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base_URL}}/card/7afc2877-303c-4af1-8f59-7b1b35a09f2f",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"card",
+										"7afc2877-303c-4af1-8f59-7b1b35a09f2f"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Review",
+					"item": [
+						{
+							"name": "Add Review",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"review\":\"Abcd\",\r\n    \"merchantId\":\"e6f965c0-e8fd-404b-9104-0b138e397931\",\r\n    \"rating\":4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base_URL}}/review",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"review"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All User Reviews",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/review/user-reviews",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"review",
+										"user-reviews"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Review",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/review/a05ffc96-361d-4b46-ad60-41ffba3a2da5",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"review",
+										"a05ffc96-361d-4b46-ad60-41ffba3a2da5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Review",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/review/a05ffc96-361d-4b46-ad60-41ffba3a2da5",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"review",
+										"a05ffc96-361d-4b46-ad60-41ffba3a2da5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update review",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rating\":5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base_URL}}/review/a05ffc96-361d-4b46-ad60-41ffba3a2da5",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"review",
+										"a05ffc96-361d-4b46-ad60-41ffba3a2da5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Booking",
+					"item": [
+						{
+							"name": "Get Booking",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/booking/6c287061-ea93-4fb0-91b9-32e3ae577842",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"booking",
+										"6c287061-ea93-4fb0-91b9-32e3ae577842"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Payment",
+					"item": [
+						{
+							"name": "Add payment",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"details\":\"payment details\",\r\n    \"bookingId\":\"6c287061-ea93-4fb0-91b9-32e3ae577842\",\r\n    \"cardId\":\"7afc2877-303c-4af1-8f59-7b1b35a09f2f\",\r\n    \"methodType\":\"CARD\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base_URL}}/payment",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"payment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Payment",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/payment/21f3dce1-323f-46dd-b5d2-90a3c2df497f",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"payment",
+										"21f3dce1-323f-46dd-b5d2-90a3c2df497f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Payment",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{Base_URL}}/payment/21f3dce1-323f-46dd-b5d2-90a3c2df497f",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"payment",
+										"21f3dce1-323f-46dd-b5d2-90a3c2df497f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update payment",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"details\":\"updated details\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base_URL}}/payment/21f3dce1-323f-46dd-b5d2-90a3c2df497f",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"payment",
+										"21f3dce1-323f-46dd-b5d2-90a3c2df497f"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"CONSUMER-ACCESS-TOKEN\", jsonData.accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"consume@test.com\",\r\n    \"password\":\"Abcd@12345\"\r\n}"
+						},
+						"url": {
+							"raw": "{{Base_URL}}/user/login",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{CONSUMER-ACCESS-TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base_URL}}/user/profile",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
